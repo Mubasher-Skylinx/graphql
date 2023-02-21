@@ -1,5 +1,6 @@
 const express = require("express");
 const expressGraphQL = require("express-graphql");
+const cors = require("cors");
 const { graphqlHTTP, getGraphQLParams } = expressGraphQL;
 
 // const data = require("./data/sampleData");
@@ -9,6 +10,8 @@ const graphqlSchema = require("./schemas/graphql/schema");
 const errorController = require("./controllers/errorController");
 
 const app = express();
+
+app.use(cors());
 
 app.use(
     "/graphql",

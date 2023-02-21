@@ -75,7 +75,7 @@ const ProjectType = new GraphQLObjectType({
 
 // MUTATIONS
 const mutation = new GraphQLObjectType({
-    name: "ClientMutation",
+    name: "Mutation",
     fields: {
         addClient: {
             type: ClientType,
@@ -85,7 +85,7 @@ const mutation = new GraphQLObjectType({
                 phone: { type: GraphQLNonNull(GraphQLString) },
             },
             async resolve(parent, args) {
-                const client = await Project.create({
+                const client = await Client.create({
                     name: args.name,
                     email: args.email,
                     phone: args.phone,
@@ -102,7 +102,7 @@ const mutation = new GraphQLObjectType({
             async resolve(parent, args) {
                 const client = await Client.findByIdAndDelete(args.id);
                 const project = await Project.deleteMany({ clientId: args.id });
-                return { client, project };
+                return client;
             },
         },
 
