@@ -204,7 +204,7 @@ const RootQueryType = new GraphQLObjectType({
             type: new GraphQLList(ClientType),
             resolve(parent, args) {
                 // return clients;
-                return Client.find({});
+                return Client.find();
             },
         },
 
@@ -224,7 +224,7 @@ const RootQueryType = new GraphQLObjectType({
             type: new GraphQLList(ProjectType),
             resolve(parent, args) {
                 // return projects;
-                return Project.find({});
+                return Project.find();
             },
         },
     },
